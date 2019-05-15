@@ -10,6 +10,7 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 stripBanners: true,
+                sourceMap: true,//生成可调式的文件
                 banner: '/*! <%= pkg.name %>-<%= pkg.version %>.js <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             // 按原文件结构压缩js文件夹内所有js文件
@@ -100,4 +101,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     // 告诉grunt当我们在终端中输入grunt时需要做些什么(注意先后顺序)
     grunt.registerTask('default',['csslint','cssmin','jshint','concat','uglify','watch']);
+    // 打包指令 *grunt build*
+    // 未清晰明白，需深究
+    grunt.registerTask('build',['csslint','cssmin','jshint','concat','uglify']);
 };
